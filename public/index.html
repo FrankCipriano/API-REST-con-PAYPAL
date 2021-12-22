@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout con Paypal</title>
+</head>
+<body>
+    <button id="checkout">Checkout</button>
+    <script>
+        const $checkout=document.getElementById(`checkout`)
+        $checkout.addEventListener(`click`,async(e)=>{
+            const respuesta=await fetch(`/crear`,{
+                method:`POST`,
+            })
+            const dato_json=await respuesta.json()
+            window.location.href=dato_json.links[1].href
+            console.log(dato_json)
+        })
+    </script>
+</body>
+</html>
